@@ -24,8 +24,8 @@ np.random.seed(1337)  # for reproducibility
 DATAPATH = Config().DATAPATH  # data path, you may set your own data path with the global envirmental variable DATAPATH
 CACHEDATA = True  # cache data or NOT
 path_cache = os.path.join(DATAPATH, 'CACHE')  # cache path
-nb_epoch = 500  # number of epoch at training stage
-nb_epoch_cont = 100  # number of epoch at training (cont) stage
+nb_epoch = 20  # number of epoch at training stage 500
+nb_epoch_cont = 10  # number of epoch at training (cont) stage 100
 batch_size = 32  # batch size
 T = 48  # number of time intervals in one day
 lr = 0.0002  # learning rate
@@ -68,6 +68,7 @@ def build_model(external_dim):
     model = stresnet(c_conf=c_conf, p_conf=p_conf, t_conf=t_conf,
                      external_dim=external_dim, nb_residual_unit=nb_residual_unit)
     adam = Adam(lr=lr)
+    #mse:没开根号的平方误差
     model.compile(loss='mse', optimizer=adam, metrics=[metrics.rmse])
     model.summary()
     # from keras.utils.visualize_util import plot
@@ -81,7 +82,7 @@ def read_cache(fname):
     f = h5py.File(fname, 'r')
     num = int(f['num'].value)
     X_train, Y_train, X_test, Y_test = [], [], [], []
-    for i in xrange(num):
+    for i in range(num):
         X_train.append(f['X_train_%i' % i].value)
         X_test.append(f['X_test_%i' % i].value)
     Y_train = f['Y_train'].value

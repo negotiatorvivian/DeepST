@@ -9,7 +9,8 @@ class Config(object):
     def __init__(self):
         super(Config, self).__init__()
 
-        DATAPATH = os.environ.get('DATAPATH')
+        # DATAPATH = os.environ.get('DATAPATH')
+        DATAPATH = '/Users/zhangziwei/city/DeepST/data'
         if DATAPATH is None:
             if platform.system() == "Windows" or platform.system() == "Linux":
                 # DATAPATH = "D:/data/traffic_flow"

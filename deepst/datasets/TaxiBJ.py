@@ -87,6 +87,7 @@ def load_data(T=48, nb_flow=2, len_closeness=None, len_period=None, len_trend=No
     # 13 - 16
     data_all = []
     timestamps_all = list()
+    print (DATAPATH)
     for year in range(13, 17):
         fname = os.path.join(
             DATAPATH, 'TaxiBJ', 'BJ{}_M32x32_T30_InOut.h5'.format(year))
@@ -102,7 +103,7 @@ def load_data(T=48, nb_flow=2, len_closeness=None, len_period=None, len_trend=No
         timestamps_all.append(timestamps)
         print("\n")
 
-    # minmax_scale
+    # minmax_scale[-1,+1]
     data_train = np.vstack(copy(data_all))[:-len_test]
     print('train_data shape: ', data_train.shape)
     mmn = MinMaxNormalization()

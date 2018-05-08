@@ -99,3 +99,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+.DS_Store
+data/.DS_Store
+
+.idea
+data

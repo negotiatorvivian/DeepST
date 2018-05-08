@@ -20,6 +20,8 @@ np.random.seed(1337)  # for reproducibility
 
 # parameters
 DATAPATH = Config().DATAPATH  # data path, you may set your own data path with a global envirmental variable DATAPATH
+# DATAPATH = "/home/wmx/transfer/workspace/DeepST/DeepST/data"
+print(DATAPATH)
 CACHEDATA = True  # cache data or NOT
 path_cache = os.path.join(DATAPATH, 'CACHE')  # cache path
 nb_epoch = 500  # number of epoch at training stage
